@@ -4,15 +4,23 @@
         
         <%- include('./partials/nav.ejs'); %>
         <div class="container">
-            <h1>Home Page</h1>
-            <% if(blogs.length > 0){ %>
-            <% blogs.forEach(blog => { %>
-                <div class="row col-md-12">
-                    <a href="/blog/<%= blog.id %>"><h3><%= blog.title %></h3></a>
-                    <p><%= blog.snippet %></p>
-                </div>
-            <% }); %>
-            <% }; %>
+            <h1>Blogs</h1>
+            
+            <div class="row">
+                <% if(blogs.length > 0){ %>
+                <% blogs.forEach(blog => { %>
+                    <div class="col-sm-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="/blog/<%= blog.id %>"><h5 class="card-title"><%= blog.title %></h5></a>
+                        <p class="card-text"><%= blog.snippet %></p>
+                        <a href="/blog/<%= blog.id %>" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                    </div>
+                <% }); %>
+                <% }; %>
+              </div>
         </div>
         
     </body>
