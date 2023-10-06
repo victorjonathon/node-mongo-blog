@@ -1,0 +1,19 @@
+<html>
+    <%- include('./partials/head.ejs'); %>
+    <body>
+        
+        <%- include('./partials/nav.ejs'); %>
+        <div class="container">
+            <h1>Home Page</h1>
+            <% if(blogs.length > 0){ %>
+            <% blogs.forEach(blog => { %>
+                <div class="row col-md-12">
+                    <a href="/blog/<%= blog.id %>"><h3><%= blog.title %></h3></a>
+                    <p><%= blog.snippet %></p>
+                </div>
+            <% }); %>
+            <% }; %>
+        </div>
+        
+    </body>
+</html>
