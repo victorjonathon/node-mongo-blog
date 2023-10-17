@@ -5,10 +5,9 @@
         <%- include('./partials/nav.ejs'); %>
         <div class="container">
             <h1>Blogs
-            <a href="/add-blog" class="btn btn-primary float-end">Add New</a>
-
+                <a href="/blog/add-blog" class="btn btn-primary float-end">Add New</a>
             </h1>
-            
+
             <div class="row">
                 <% if(blogs.length > 0){ %>
                 <% blogs.forEach(blog => { %>
@@ -18,7 +17,7 @@
                                 <a href="/blog/<%= blog.id %>"><h5 class="card-title"><%= blog.title %></h5></a>
                                 <p class="card-text"><%= blog.snippet %></p>
                                 <a href="/blog/<%= blog.id %>" class="btn btn-primary">View Details</a>
-                                <a href="javascript:void(0)" class="btn btn-danger ms-2" confirm="Are you sure?" onclick="deleteFun('<%= blog.id %>')">Delete</a>
+                                <a href="javascript:void(0)" class="btn btn-danger ms-2" confirm="Are you sure?" onclick="if(confirm('Are you sure to Delete?')){ deleteFun('<%= blog.id %>')}">Delete</a>
                             </div>
                         </div>
                     </div>

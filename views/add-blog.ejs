@@ -1,0 +1,31 @@
+<html>
+    <%- include('./partials/head.ejs'); %>
+    <body>
+        
+        <%- include('./partials/nav.ejs'); %>
+        <div class="container">
+            <h1>Blogs</h1>
+            
+            <form action="/blog/create" method="POST">
+                <div class="row">
+                    <div class="mb-3">
+                        <label for="" class="form-label">Title</label>
+                        <input type="text" name="title" class="form-control" id="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Snippet</label>
+                        <input type="text" name="snippet" class="form-control" id="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Blog detail</label>
+                        <textarea name="body" class="form-control" id="" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-primary">Add blog</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+    </body>
+</html>

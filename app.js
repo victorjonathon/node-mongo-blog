@@ -18,6 +18,8 @@ mongoose.connect(process.env.MONGO_ATLAS_CONNECTION_STRING)
 //register view engines
 app.set('view engine', 'ejs');
 
+app.use(express.static('public')); 
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req,res)=>{
     res.render('home', {title: 'Home'});
@@ -27,20 +29,16 @@ app.get('/about', (req,res)=>{
     res.render('about', {title: 'About'});
 });
 
-app.get('/blog/add-blog', (req, res)=>{
-    const blogObj = new Blog({
-        title: 'Best wedding photographers',
-        snippet: 'ISPWP is the best site',
-        body: 'When we talk about a real photographers directory'
-    });
+app.post('/blog/create', (req, res)=>{
+    const blogObj = new Blog(req.body);
 
     blogObj.save()
     .then((result)=> res.redirect('../blogs'))
     .catch((err)=>console.log(err));
 });
 
-app.get('/blog/create', (req,res)=>{
-    res.render('create', {title: 'Add Blog'});
+app.get('/blog/add-blog', (req,res)=>{
+    res.render('add-blog', {title: 'Add Blog'});
 });
 
 app.get('/blogs', (req, res) => {
