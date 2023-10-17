@@ -35,7 +35,7 @@ app.get('/blog/add-blog', (req, res)=>{
     });
 
     blogObj.save()
-    .then((result)=> res.send(result))
+    .then((result)=> res.redirect('../blogs'))
     .catch((err)=>console.log(err));
 });
 
@@ -55,6 +55,13 @@ app.get('/blog/:id', (req, res) => {
     .catch((err) => console.log(err));
 });
 
+app.delete('/blog/:id', (req, res) => {
+    Blog.findByIdAndDelete(req.params.id)
+    .then(result => {
+        res.json({ redirect: '/blogs', message: 'success'})
+    })
+    .catch(err => console.log(err));
+});
 //404
 app.use((req,res)=>{
     res.status(404).render('404', {title: '404 Not found!'});
